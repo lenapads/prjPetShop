@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petshop - Home</title>
+    <style>
+      /* Reset and General Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #fce4ec; /* Soft pink */
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Header */
+      header {
+        background-color: #f6f161; /* Dark green */
+        padding: 20px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;/* Light pink */
+        transition: background-color 0.3s ease;
+      }
+
+      nav a:hover {
+        background-color: #ec407a; /* Vibrant pink */
+      }
+
+      /* Main Content */
+      main {
+        flex: 1; /* Take available space */
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      section {
+        background-color: white;
+        border-radius: 15px;
+        padding: 55px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 2px solid #f6f161; /* Dark green border */
+      }
+
+      section h2 {
+        color: #ec407a;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+        text-align: center;
+      }
+
+      section p {
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: center;
+        color: #555;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+      }
+
+      ul li {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 25px;
+        color: #555;
+      }
+
+      ul li::before {
+        content: "🐾"; /* Cute paw print icon */
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.2rem;
+        color: #f48fb1; /* Light pink */
+      }
+
+      /* Footer */
+      footer {
+        background-color: #f6f161; /* Dark green */
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-size: 0.9rem;
+        border-top: 5px solid #f48fb1; /* Light pink border */
+      }
+
+      footer p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Bem-vindo ao Petshop Amigo!</h1>
+      <nav>
+        <a href="./login.html">Login</a>
+        <a href="./singup.html">Cadastre-se</a>
+        <a href="./pet-register.html">Registrar Pet</a>
+        <a href="./service-registration.html">Serviços</a>
+        <a href="./service-scheduling.html">Agendamento</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Sobre Nós</h2>
+        <p>
+          Oferecemos os melhores cuidados para seu pet, com amor e dedicação!
+        </p>
+      </section>
+      <section>
+        <h2>Principais Serviços</h2>
+        <ul>
+          <li>Banho e Tosa</li>
+          <li>Consulta Veterinária</li>
+          <li>Hospedagem</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Petshop Amigo - Todos os direitos reservados.</p>
+    </footer>
+  </body>
+</html>

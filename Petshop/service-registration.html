@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Serviços - Petshop</title>
+    <style>
+        /* Reset and General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fce4ec; /* Light Blue */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #f6f161; /* Blue */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            flex: 1; /* Take available space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .service-registration-container {
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #f48fb1; /* Light Blue Border */
+        }
+
+        .service-registration-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #f48fb1; /* Blue */
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #f6f161; /* Blue */
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #f48fb1; /* Light Blue */
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #f6f161; /* Blue */
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f6f161; /* Darker Blue */
+        }
+
+        footer {
+            background-color: #f6f161; /* Blue */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+            border-top: 4px solid #f48fb1; /* Light Blue Border */
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Petshop Amigo - Cadastro de Serviços
+    </header>
+
+    <main>
+        <section class="service-registration-container">
+            <h2>Cadastro de Serviços</h2>
+            <form id="serviceRegistrationForm">
+                <div class="form-group">
+                    <label for="serviceName">Nome do Serviço:</label>
+                    <input type="text" id="serviceName" name="serviceName" placeholder="Ex: Banho e Tosa" required>
+                </div>
+                <div class="form-group">
+                    <label for="serviceDescription">Descrição do Serviço:</label>
+                    <textarea id="serviceDescription" name="serviceDescription" placeholder="Descreva o serviço" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="servicePrice">Preço do Serviço (R$):</label>
+                    <input type="number" id="servicePrice" name="servicePrice" step="0.01" placeholder="Digite o preço" required>
+                </div>
+                <button type="submit">Cadastrar Serviço</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Petshop Amigo - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const serviceRegistrationForm = document.getElementById("serviceRegistrationForm");
+
+            serviceRegistrationForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                const serviceName = document.getElementById("serviceName").value;
+                const serviceDescription = document.getElementById("serviceDescription").value;
+                const servicePrice = parseFloat(document.getElementById("servicePrice").value);
+
+                try {
+                    const response = await fetch("http://localhost:8080/api/services", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ serviceName, serviceDescription, servicePrice })
+                    });
+
+                    if (response.ok) {
+                        alert("Serviço cadastrado com sucesso!");
+                        serviceRegistrationForm.reset();
+                    } else {
+                        alert("Erro no cadastro do serviço. Tente novamente.");
+                    }
+                } catch (error) {
+                    console.error("Erro ao conectar ao servidor:", error);
+                    alert("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
